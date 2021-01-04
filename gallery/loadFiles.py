@@ -10,8 +10,7 @@ class LoadFiles:
         self.path_to_scan = path_to_scan if path_to_scan else self.PATH
 
     def scanDirFunc(self):
-        files = os.listdir(self.path_to_scan)
-        return files
+        return os.listdir(self.path_to_scan)
 
     def getFirstFile(self, files, first_file = True, search = None):
         files_content = []
