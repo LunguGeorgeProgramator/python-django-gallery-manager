@@ -1,24 +1,20 @@
 
+{% block head %}
+{% include "head.html" %}
+{% endblock %}
 {% load static %}
-
-Test {{ var_test }}
-
-
 {{ files|length }}
-<img src="{% static '1.jpg' %}">
-{% comment %}
-
-{% for file in files %}
-    <BR>
-    {{ file }}
-{% endfor %} 
-
-
-test
-{% endcomment %}
-
-{% for file in complete_list %}
-    <BR> 
-    {{ file.dir }}  
-    <img src="{{ file.first_file }}" />"
-{% endfor %} 
+<div class="container">
+    <div class="row">
+        {% for file in complete_list %}
+        <div class="col-3">
+            <div class="ex2">
+                <img width="250" src="{% static file.files_in_dir %}">
+            </div>
+            <div class="ex3">
+                {{ file.dir }} 
+            </div> 
+        </div>
+        {% endfor %} 
+    </div>
+</div>

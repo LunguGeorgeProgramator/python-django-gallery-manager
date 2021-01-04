@@ -1,0 +1,77 @@
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.ex2 {
+  height: 388px;
+  overflow: hidden;
+}
+
+.ex3 {
+  height: 50px;
+  overflow: hidden;
+}
+
+/* body { background-color: black; } */
+
+header {
+  padding: 1em;
+  background-color: #333;
+  text-align: center;
+}
+/* h1 { color:#fff;} */
+a:link,
+a:visited {
+  text-decoration: none;
+  font-family: sans-serif;
+  /* color: white; */
+}
+
+/* a:hover { color: #ddd; } */
+
+#author { float: left; }
+
+#repo { float: right; }
+
+#title {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.gallery {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-width: 33%;
+    -moz-column-width: 33%;
+    column-width: 33%;
+    }
+.gallery .pics {
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease; }
+    .gallery .animation {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    }
+
+@media (max-width: 450px) {
+    .gallery {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+        -webkit-column-width: 100%;
+        -moz-column-width: 100%;
+        column-width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .btn.filter {
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+    }
+}
