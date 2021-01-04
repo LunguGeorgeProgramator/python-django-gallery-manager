@@ -1,22 +1,20 @@
 from django.shortcuts import render
-from gallery.scan_dir_class import ScanDir
+from gallery.loadFiles import LoadFiles 
 from gallery.pagination import Pagination
 import random
 
-
 def index(request, last_item = None):
     r = Pagination(last_item)
-    s = ScanDir()
-    files = s.scanDirFunc()
-    files = s.scanDirFunc()[r.prev:r.next]
-    return render(request, 'index.html', {
-        'var_test': 's', 
-        'files': files, 
+    s = LoadFiles()
+    files = s.scanDirFunc()[r.prev:r.lastPage]
+    return render(request, 'index.html', { 
         'complete_list': s.getFirstFile(files),
         'next': r.next,
-        'prev': r.prev,
+        'prev': r.prev
     })
 
-def view(request):
-    return render(request, 'view.html', {'var_test': 's2'})
+def view(request, folder_name):
+    return render(request, 'view.html', {
+        'files': LoadFiles().getPhotosFiles(folder_name)
+    })
 

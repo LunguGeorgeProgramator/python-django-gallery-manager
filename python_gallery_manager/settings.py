@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from gallery.scan_dir_class import ScanDir
+from gallery.loadFiles import LoadFiles 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -130,7 +130,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     # location of your application, should not be public web accessible
     # os.path.join(BASE_DIR, 'static'),
-    ScanDir.PATH,
+    LoadFiles.PATH,
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') # 'data' is my media folder

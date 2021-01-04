@@ -3,7 +3,6 @@
 {% include "head.html" %}
 {% endblock %}
 {% load static %}
-{{ files|length }}
 <div class="container">
     <nav aria-label="...">
         <ul class="pagination">
@@ -15,10 +14,10 @@
         {% for file in complete_list %}
         <div class="col-3">
             <div class="ex2">
-                <img width="250" src="{% static file.files_in_dir %}">
+                <a target="_blank" href="{% url 'view_main' file.dir_name_encoded %}"><img width="250" src="{% static file.files_in_dir %}"></a>
             </div>
             <div class="ex3">
-                {{ file.dir }} 
+                {{ file.dir_name }} 
             </div> 
         </div>
         {% endfor %} 

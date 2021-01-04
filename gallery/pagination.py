@@ -1,6 +1,6 @@
 class Pagination:
 
-    MAX_ON_PAGE = 500
+    MAX_ON_PAGE = 50
 
     def __init__(self, last_page = None):
         self.__last_page = self.lastPageSetter(last_page, self.MAX_ON_PAGE)
@@ -15,28 +15,20 @@ class Pagination:
     def next(self):
         return self.__next
 
-    # @next.setter
-    def nextSetter(self, value, max_pages):
-        return value + max_pages
-
     @property
     def prev(self):
         return self.__prev
 
     # @prev.setter
     def lastPageSetter(self, value, max_pages):
-        return int(value if value != None else max_pages)
+        value = int(value) if value else max_pages
+        return value if value > 0 else max_pages
 
+    # @next.setter
+    def nextSetter(self, value, max_pages):
+        return value + max_pages
+    
     # @prev.setter
     def prevSetter(self, value, max_pages):
         prev_var = (value if value else 0) - max_pages
         return 0 if prev_var < 0 else prev_var
-
-    # def setMaxPagination(max, search):
-    #     return search ? max : ( >= max ? max : $this->getLastPage());
-    
-
-    # function setMinPagination($search) : int {
-    #     return $search ?  0 : $this->getPrev();
-    # }
-
