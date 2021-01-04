@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index_main'),
+    url(r'^(?P<last_item>\d+)$', views.index, name='index_main'),
     path('view', views.view, name='view_main'),
 ]

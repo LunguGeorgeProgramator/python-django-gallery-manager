@@ -5,6 +5,12 @@
 {% load static %}
 {{ files|length }}
 <div class="container">
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="{% url 'index_main' prev %}">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="{% url 'index_main' next %}"> Next</a></li>
+        </ul>
+    </nav>  
     <div class="row">
         {% for file in complete_list %}
         <div class="col-3">
@@ -17,4 +23,10 @@
         </div>
         {% endfor %} 
     </div>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="{% url 'index_main' prev %}">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="{% url 'index_main' next %}"> Next</a></li>
+        </ul>
+    </nav>  
 </div>
