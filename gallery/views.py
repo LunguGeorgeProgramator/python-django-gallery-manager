@@ -13,8 +13,12 @@ def index(request, last_item = None):
         'prev': r.prev
     })
 
-def view(request, folder_name):
+def view(request, folder_name, last_item = None):
+    r = Pagination(last_item)
     return render(request, 'view.html', {
-        'files': LoadFiles().getPhotosFiles(folder_name)
+        'files': LoadFiles().getPhotosFiles(folder_name)[r.prev:r.lastPage],
+        'folder_name': folder_name,
+        'next': r.next,
+        'prev': r.prev
     })
 

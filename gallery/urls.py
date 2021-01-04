@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.index, name='index_main'),
     url(r'^(?P<last_item>\d+)$', views.index, name='index_main'),
     path('view/<folder_name>', views.view, name='view_main'),
+    url(r'^view/(?P<folder_name>.+)/(?P<last_item>\d+)$', views.view, name='view_main'),
 ]

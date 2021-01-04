@@ -3,6 +3,12 @@
 {% endblock %}
 {% load static %}
 <div class="container">
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name prev %}">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name next %}"> Next</a></li>
+        </ul>
+    </nav>  
     <div class="row">
         {% for file in files %}
         <div class="col-3">
@@ -10,4 +16,10 @@
         </div>
         {% endfor %} 
     </div>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name prev %}">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name next %}"> Next</a></li>
+        </ul>
+    </nav>  
 </div>
