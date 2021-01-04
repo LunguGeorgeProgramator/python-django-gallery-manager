@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
+import os, re
 import urllib.parse
 
 class LoadFiles:
@@ -13,17 +13,19 @@ class LoadFiles:
         files = os.listdir(self.path_to_scan)
         return files
 
-    def getFirstFile(self, files, first_file = True):
+    def getFirstFile(self, files, first_file = True, search = None):
         files_content = []
         for file in files:
             if(os.path.isdir(self.path_to_scan + '/' + file) == False):
+                continue
+            if search and not re.search(re.escape(search), file, flags=re.I):
                 continue
             files_in_dir = os.listdir(self.path_to_scan + '/' + file)
             if(first_file == True):
                 files_in_dir = files_in_dir[0]
             files_content.append({
                 'dir_name': file,
-                'dir_name_encoded': LoadFiles.encodeUrl(file),
+                'dir_name_encoded': file,
                 'files_in_dir': LoadFiles.encodeUrl(file+'/'+files_in_dir)
             })
         return files_content

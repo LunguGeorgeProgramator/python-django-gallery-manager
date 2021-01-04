@@ -10,17 +10,11 @@
 	};
 </script>
 <div class="container">
-    <nav aria-label="...">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name prev %}">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name next %}"> Next</a></li>
-            <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
-        </ul>
-    </nav>  
     <div class="row">
         <div class="row zoomwall" id="zoomwall" >
             {% for file in files %}
-                <img class="col-3" src="{% static file %}">
+            <!-- class="col-3" -->
+                <img src="{% static file %}">
             {% endfor %} 
         </div>
     </div>
@@ -31,4 +25,5 @@
             <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
         </ul>
     </nav>  
+    <div class="row"><i>{{ folder_name }}</i></div>
 </div>

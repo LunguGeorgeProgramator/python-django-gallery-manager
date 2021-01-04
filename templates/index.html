@@ -4,6 +4,7 @@
 {% endblock %}
 {% load static %}
 <div class="container">
+    {% if prev != None %}
     <nav aria-label="...">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="{% url 'index_main' prev %}">Previous</a></li>
@@ -11,6 +12,22 @@
             <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
         </ul>
     </nav>  
+    {% endif %}
+
+    <div class="row">
+    	<form action="{% url 'search_main' %}" class="form-inline" method="get">
+			<div class="form-group mx-sm-3 mb-2">
+				<label for="inputSearch" class="sr-only">Search:</label>
+				<input type="text" class="form-control" id="search" placeholder="Search" name="search">
+			</div>
+			<button type="submit" class="btn btn-primary mb-2">Submit</button>
+			<div class="form-group mx-sm-3 mb-2">
+			  <a href="{% url 'index_main' %}">Reset</a>
+			</div>
+    	</form>
+    </div>
+      
+
     <div class="row">
         {% for file in complete_list %}
         <div class="col-3">
@@ -23,6 +40,7 @@
         </div>
         {% endfor %} 
     </div>
+    {% if prev != None %}
     <nav aria-label="...">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="{% url 'index_main' prev %}">Previous</a></li>
@@ -30,4 +48,5 @@
             <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
         </ul>
     </nav>  
+    {% endif %} 
 </div>
