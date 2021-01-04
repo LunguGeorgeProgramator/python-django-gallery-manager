@@ -1,1 +1,24 @@
+
+{% load static %}
+
 Test {{ var_test }}
+
+
+{{ files|length }}
+<img src="{% static '1.jpg' %}">
+{% comment %}
+
+{% for file in files %}
+    <BR>
+    {{ file }}
+{% endfor %} 
+
+
+
+{% endcomment %}
+
+{% for file in complete_list %}
+    <BR>
+    {{ file.dir }}  
+    <img src="{{ file.first_file }}" />"
+{% endfor %} 
