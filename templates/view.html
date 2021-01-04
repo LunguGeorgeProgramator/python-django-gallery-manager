@@ -2,24 +2,33 @@
 {% include "head.html" %}
 {% endblock %}
 {% load static %}
+<script src="{{ MEDIA_URL }}js/zoomwall.js"></script>
+<link rel="stylesheet" href="{{ MEDIA_URL }}css/zoomwall.css">
+<script>
+	window.onload = function() {
+		zoomwall.create(document.getElementById('zoomwall'), true);
+	};
+</script>
 <div class="container">
     <nav aria-label="...">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name prev %}">Previous</a></li>
             <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name next %}"> Next</a></li>
+            <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
         </ul>
     </nav>  
     <div class="row">
-        {% for file in files %}
-        <div class="col-3">
-            <img width="250" src="{% static file %}">
+        <div class="row zoomwall" id="zoomwall" >
+            {% for file in files %}
+                <img class="col-3" src="{% static file %}">
+            {% endfor %} 
         </div>
-        {% endfor %} 
     </div>
     <nav aria-label="...">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name prev %}">Previous</a></li>
             <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name next %}"> Next</a></li>
+            <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
         </ul>
     </nav>  
 </div>
