@@ -21,7 +21,12 @@ class LoadFiles:
                 continue
             files_in_dir = os.listdir(self.path_to_scan + '/' + file)
             if(first_file == True):
-                files_in_dir = files_in_dir[0]
+                for file_first in files_in_dir:
+                    if '.init' in file_first or os.path.isdir(self.path_to_scan + '/' + file + '/' +file_first) == True:
+                        continue
+                    files_in_dir = file_first
+                    break
+            print(files_in_dir)
             files_content.append({
                 'dir_name': file,
                 'dir_name_encoded': file,
@@ -35,7 +40,7 @@ class LoadFiles:
         self.path_to_scan = self.path_to_scan + '/' + dir_name
         for file in self.scanDirFunc():
             file_path = self.path_to_scan + '/' + file
-            if(os.path.isdir(file_path) == True):
+            if os.path.isdir(file_path) == True or '.ini' in file:
                 continue
             files_content.append(file_path)
         return files_content
