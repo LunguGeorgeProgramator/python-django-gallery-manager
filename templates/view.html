@@ -25,5 +25,13 @@
             <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
         </ul>
     </nav>  
-    <div class="row"><i>{{ folder_name }}</i></div>
+    <div class="row">
+        <i>{{ folder_name }}</i>
+        <div id="app">
+            <input type="button" v-bind:value="checkedDirName" v-on:click="(checkedDirName = '{{ folder_name }}'), (show_modal_1=true)" value="Edit">
+            {% block hidden %}
+            {% include "vue_modal.html" %}
+            {% endblock %}
+        </div>
+    </div>
 </div>

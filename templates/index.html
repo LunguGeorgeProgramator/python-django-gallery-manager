@@ -2,7 +2,7 @@
 {% block head %}
 {% include "head.html" %}
 {% endblock %}
-{% load static %}
+{% load static %}    
 <div class="container">
     {% if prev != None %}
     <nav aria-label="...">
@@ -13,7 +13,6 @@
         </ul>
     </nav>  
     {% endif %}
-
     <div class="row">
     	<form action="{% url 'search_main' %}" class="form-inline" method="get">
 			<div class="form-group mx-sm-3 mb-2">
@@ -26,19 +25,25 @@
 			</div>
     	</form>
     </div>
-      
-
-    <div class="row">
-        {% for file in complete_list %}
-        <div class="col-3">
-            <div class="ex2">
-                <a target="_blank" href="{% url 'view_main' file.dir_name_encoded %}"><img width="250" src="{% static file.files_in_dir %}"></a>
+    <div id="app">
+        <div class="row">
+            {% for file in complete_list %}
+            <div class="col-3">
+                <div class="ex2">
+                    <a target="_blank" href="{% url 'view_main' file.dir_name_encoded %}"><img width="250" src="{% static file.files_in_dir %}"></a>
+                </div>
+                <div class="ex3">
+                    <!-- <input v-model="checkedDirName"> -->
+                    <!-- <input v-bind:value="checkedDirName" v-on:input="checkedDirName = $event.target.value"> -->
+                    <input type="button" v-bind:value="checkedDirName" v-on:click="(checkedDirName = '{{ file.dir_name }}'), (show_modal_1=true)" value="Edit">
+                    {{ file.dir_name }} 
+                </div> 
             </div>
-            <div class="ex3">
-                {{ file.dir_name }} 
-            </div> 
+            {% endfor %} 
         </div>
-        {% endfor %} 
+        {% block hidden %}
+        {% include "vue_modal.html" %}
+        {% endblock %}
     </div>
     {% if prev != None %}
     <nav aria-label="...">

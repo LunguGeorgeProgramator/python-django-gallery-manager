@@ -1,0 +1,49 @@
+      <Modal v-model="show_modal_1" title="Folder option:" cssClass="mw10">
+        <form novalidate>
+          <div class="form-group">
+            <label for="folderName">Rename Folder Name</label>
+            <input v-model="checkedDirName" type="text" class="form-control" id="folderName" placeholder="Folder Name">
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <!-- <input v-model:="checkedDelete" type="checkbox" id="jack" value="Jack" v-on:click="confimBox()"> -->
+              <input class="check-delete-input" type="checkbox" id="checkbox" v-model="checkedDeleteValidation">
+              <label class="form-check-label check-delete-label" for="gridCheck" v-on:click="confimBox()">
+                Check to remove folder forever:
+              </label>
+            </div>
+          </div>
+          <hr class="full-hr">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="float-right">
+                <button class="btn btn-primary" type="button" @click="show_modal_1=false">Ok</button>
+                <button class="btn btn-secondary ml-2" type="button" @click="show_modal_1=false">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </Modal>
+
+      <script type="text/javascript">
+        Vue.component('Modal', VueModal);
+        new Vue({
+            delimiters: ['||', '||'],
+            el: '#app',
+            data: {
+                show_modal_1: false,
+                checkedDirName: '',
+                checkedDeleteValidation: false
+            }, 
+            methods: {
+                confimBox () {
+                    if(this.checkedDeleteValidation == false && confirm('Are you sure?')){
+                        this.checkedDeleteValidation = true;
+                    } else {
+                        this.checkedDeleteValidation = false;
+                    }
+                }
+                
+            }
+        });
+      </script>
