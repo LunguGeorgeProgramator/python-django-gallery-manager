@@ -2,41 +2,49 @@
 {% block head %}
 {% include "head.html" %}
 {% endblock %}
-{% load static %}    
-<div class="container">
-    {% if prev != None %}
-    <nav aria-label="...">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="{% url 'index_main' prev %}">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="{% url 'index_main' next %}"> Next</a></li>
-            <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
-        </ul>
-    </nav>  
-    {% endif %}
-    <div class="row">
-    	<form action="{% url 'search_main' %}" class="form-inline" method="get">
-			<div class="form-group mx-sm-3 mb-2">
-				<label for="inputSearch" class="sr-only">Search:</label>
-				<input type="text" class="form-control" id="search" placeholder="Search" name="search">
-			</div>
-			<button type="submit" class="btn btn-primary mb-2">Submit</button>
-			<div class="form-group mx-sm-3 mb-2">
-			  <a href="{% url 'index_main' %}">Reset</a>
-			</div>
-    	</form>
+{% load static %}   
+<div style="background: #2a3744;"> 
+<div class="container" >
+    <div class="row pt-3 pl-3 {% if prev == None %} pb-3 {% endif %}" >
+        <div clas="col">
+            <form action="{% url 'search_main' %}" class="form-inline" method="get">
+                <div class="form-group mx-sm-3">
+                    <label for="inputSearch" class="sr-only">Search:</label>
+                    <input type="text" class="form-control" id="search" placeholder="Search" name="search">
+                </div>
+                <button type="submit" class="btn btn-primary">S</button>
+                <div class="form-group mx-sm-3">
+                <a href="{% url 'index_main' %}">Reset</a>
+                </div>
+            </form>
+        </div>
+        <div clas="col">
+            {% if prev != None %}
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="{% url 'index_main' prev %}">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="{% url 'index_main' next %}"> Next</a></li>
+                    <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
+                </ul>
+            </nav>  
+            {% endif %}
+        </div>
     </div>
+</div>
+</div>
+<div class="container mt-2">
     <div id="app">
         <div class="row">
             {% for file in complete_list %}
-            <div class="col-3">
+            <div class="col-3 mb-2">
                 <div class="ex2">
                     <a target="_blank" href="{% url 'view_main' file.dir_name_encoded %}"><img width="250" src="{% static file.files_in_dir %}"></a>
                 </div>
                 <div class="ex3">
                     <!-- <input v-model="checkedDirName"> -->
                     <!-- <input v-bind:value="checkedDirName" v-on:input="checkedDirName = $event.target.value"> -->
-                    <input type="button" v-bind:value="checkedDirName" v-on:click='(checkedDirName = "{{ file.dir_name }}"), (show_modal_1=true)' value="Edit">
-                    {{ file.dir_name }} 
+                    <button type="button" class="btn btn-secondary pl-1 pr-1 p-0 m-0" v-bind:value="checkedDirName" v-on:click='(checkedDirName = "{{ file.dir_name }}"), (show_modal_1=true)'><i class="fa fa-grav" aria-hidden="true"></i></button>
+                    <a target="_blank" style="color: black;" title="{{ file.dir_name }}" href="{% url 'view_main' file.dir_name_encoded %}">{{ file.dir_name }}</a>
                 </div> 
             </div>
             {% endfor %} 
@@ -45,13 +53,19 @@
         {% include "vue_modal.html" %}
         {% endblock %}
     </div>
-    {% if prev != None %}
-    <nav aria-label="...">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="{% url 'index_main' prev %}">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="{% url 'index_main' next %}"> Next</a></li>
-            <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
-        </ul>
-    </nav>  
-    {% endif %} 
+</div>
+<div style="background: #2a3744;"> 
+    <div class="container mt-3" >
+        <div class="row pt-4 pl-3" >
+            {% if prev != None %}
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="{% url 'index_main' prev %}">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="{% url 'index_main' next %}"> Next</a></li>
+                    <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
+                </ul>
+            </nav>  
+            {% endif %} 
+        </div>
+    </div>
 </div>
