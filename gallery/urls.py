@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^search/(?P<search>.+)$', views.search, name='search_main'),
     path('view/<folder_name>', views.view, name='view_main'),
     url(r'^view/(?P<folder_name>.+)/(?P<last_item>\d+)$', views.view, name='view_main'),
+    path('rename', views.renameDir, name='rename_main'),
+    path('delete', views.removeDir, name='delete_main'),
 ]

@@ -35,7 +35,7 @@
                 <div class="ex3">
                     <!-- <input v-model="checkedDirName"> -->
                     <!-- <input v-bind:value="checkedDirName" v-on:input="checkedDirName = $event.target.value"> -->
-                    <input type="button" v-bind:value="checkedDirName" v-on:click="(checkedDirName = '{{ file.dir_name }}'), (show_modal_1=true)" value="Edit">
+                    <input type="button" v-bind:value="checkedDirName" v-on:click='(checkedDirName = "{{ file.dir_name }}"), (show_modal_1=true)' value="Edit">
                     {{ file.dir_name }} 
                 </div> 
             </div>

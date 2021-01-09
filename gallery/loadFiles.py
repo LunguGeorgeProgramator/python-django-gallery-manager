@@ -26,7 +26,8 @@ class LoadFiles:
                         continue
                     files_in_dir = file_first
                     break
-            print(files_in_dir)
+            if (type(files_in_dir) == list):
+                files_in_dir = files_in_dir[0]
             files_content.append({
                 'dir_name': file,
                 'dir_name_encoded': file,

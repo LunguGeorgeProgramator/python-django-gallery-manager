@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from gallery.loadFiles import LoadFiles 
 from gallery.pagination import Pagination
-import random
+from django.http import HttpResponse
+from shutil import rmtree
+import random, os, ast
 
 def index(request, last_item = None):
     s = LoadFiles()
@@ -36,3 +38,20 @@ def search(request, search = None):
         'next': None,
         'prev': None
     })
+
+def renameDir(request):
+    requestPost = request.body.decode('utf-8')
+    requestPost = ast.literal_eval(requestPost) if requestPost and type(requestPost) == str else requestPost
+    if ("oldDirName" in requestPost and "newDirName" in requestPost):
+        oldPath = LoadFiles.PATH + '/'+ requestPost["oldDirName"]
+        newPath = LoadFiles.PATH + '/'+ requestPost["newDirName"]
+        if (requestPost["oldDirName"] and requestPost["newDirName"]):
+            os.rename(oldPath, newPath) 
+    return HttpResponse("Done", content_type='text/plain')
+
+def removeDir(request):
+    requestPost = request.body.decode('utf-8')
+    requestPost = ast.literal_eval(requestPost) if requestPost and type(requestPost) == str else requestPost
+    if ("oldDirName" in requestPost):
+        rmtree(LoadFiles.PATH + '/'+ requestPost["oldDirName"])
+    return HttpResponse("Done", content_type='text/plain') 
