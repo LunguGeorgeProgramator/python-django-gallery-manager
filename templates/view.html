@@ -2,20 +2,30 @@
 {% include "head.html" %}
 {% endblock %}
 {% load static %}
-<script src="{{ MEDIA_URL }}js/zoomwall.js"></script>
-<link rel="stylesheet" href="{{ MEDIA_URL }}css/zoomwall.css">
-<script>
-	window.onload = function() {
-		zoomwall.create(document.getElementById('zoomwall'), true);
-	};
-</script>
+<div style="background: #2a3744;"> 
+    <div class="container mb-3" >
+        <div class="row pt-4" >
+            <div class="col">
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name prev %}">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="{% url 'view_main' folder_name next %}"> Next</a></li>
+                        <li class="page-item"><a class="page-link" href="{% url 'index_main' %}">Main page</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col">
+                <i style="color: white;">{{ folder_name }}</i>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
-        <div class="row zoomwall" id="zoomwall" >
-            {% for file in files %}
-            <!-- class="col-3" -->
-                <img title="click to full pic" style="cursor: pointer;" src="{% static file %}">
-            {% endfor %} 
+        <div id="app">
+            <vue-previewer :style="style" :images="imgs" mode="image" :options="options">
+                <template v-slot:footer="{ image }">|| image.name ||</template>
+            </vue-previewer>
         </div>
     </div>
 </div>
@@ -37,3 +47,19 @@
         </div>
     </div>
 </div>
+<script>
+    new Vue({
+      el: '#app',
+      delimiters: ['||', '||'],
+      components: { VuePreviewer: window.VuePreviewer },
+      data() {
+        return {
+          options: {defaultWidth: '24%', defaultHeight: '100%'},
+          style: {
+            width: '100%',
+          },
+          imgs: {{ files_json|safe }}
+        }
+      }
+    })
+</script>

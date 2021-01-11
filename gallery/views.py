@@ -3,7 +3,7 @@ from gallery.loadFiles import LoadFiles
 from gallery.pagination import Pagination
 from django.http import HttpResponse
 from shutil import rmtree
-import random, os, ast
+import random, ast, os, sys, stat, json
 
 def index(request, last_item = None):
     s = LoadFiles()
@@ -19,7 +19,8 @@ def view(request, folder_name, last_item = None):
     s = LoadFiles()
     r = Pagination(last_item)
     return render(request, 'view.html', {
-        'files': s.getPhotosFiles(folder_name)[r.prev:r.lastPage],
+        'files_json': json.dumps(s.getPhotosFiles(folder_name)[r.prev:r.lastPage]),
+        # 'files': json.dumps(s.getPhotosFiles(folder_name)[r.prev:r.lastPage]),
         'folder_name': folder_name,
         'next': r.next,
         'prev': r.prev
@@ -53,5 +54,8 @@ def removeDir(request):
     requestPost = request.body.decode('utf-8')
     requestPost = ast.literal_eval(requestPost) if requestPost and type(requestPost) == str else requestPost
     if ("oldDirName" in requestPost):
-        rmtree(LoadFiles.PATH + '/'+ requestPost["oldDirName"])
+        path = LoadFiles.PATH + '/'+ requestPost["oldDirName"]
+        if(os.chmod(path, stat.S_IXGRP)):
+            os.chmod(path, stat.S_IWOTH)
+        rmtree(path)
     return HttpResponse("Done", content_type='text/plain') 

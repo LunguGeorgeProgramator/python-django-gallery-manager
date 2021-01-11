@@ -26,12 +26,12 @@ class LoadFiles:
                         continue
                     files_in_dir = file_first
                     break
-            if (type(files_in_dir) == list):
+            if (type(files_in_dir) == list and files_in_dir):
                 files_in_dir = files_in_dir[0]
             files_content.append({
                 'dir_name': file,
                 'dir_name_encoded': file,
-                'files_in_dir': LoadFiles.encodeUrl(file+'/'+files_in_dir)
+                'files_in_dir': LoadFiles.encodeUrl(file+'/' + files_in_dir if files_in_dir else '')
             })
         return files_content
     
@@ -43,7 +43,7 @@ class LoadFiles:
             file_path = self.path_to_scan + '/' + file
             if os.path.isdir(file_path) == True or '.ini' in file:
                 continue
-            files_content.append(file_path)
+            files_content.append(('/static/' + file_path).strip())
         return files_content
     
     @staticmethod
