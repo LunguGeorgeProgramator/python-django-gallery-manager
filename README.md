@@ -17,3 +17,22 @@ The number of folder per page is set no by default to 100, it can be change to a
 Change code form 100 to any number nedded:
     
     MAX_ON_PAGE = 100
+
+Tutorial index page:
+
+![name-of-you-image](https://github.com/LunguGeorgeProgramator/python_gallery_manager/blob/master/tutorial_photos/index.jpg?raw=true)
+
+Option of this page are:
+  1. search in the top form add text and click the blue button.
+  2. navigate pagiation.
+  3. edit each folder name or remove it for ever for your store.
+  4. click one of the photos representing one folder and see the photos content ('loads the view page').
+
+![name-of-you-image](https://github.com/LunguGeorgeProgramator/python_gallery_manager/blob/master/tutorial_photos/edit_page.jpg?raw=true)
+
+View photos per folder page, here if there are more than the max items pe page ('see variable MAX_ON_PAGE default value 100') the pagination can be used to see them all. 
+Also there is a view photo vue library added to examin in more detail "vue-viewer" just click on photo:
+
+![name-of-you-image](https://github.com/LunguGeorgeProgramator/python_gallery_manager/blob/master/tutorial_photos/edit_page.jpg?raw=true)
+
+![name-of-you-image](https://github.com/LunguGeorgeProgramator/python_gallery_manager/blob/master/tutorial_photos/view.jpg?raw=true)
