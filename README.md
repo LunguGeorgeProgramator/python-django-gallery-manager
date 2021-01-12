@@ -33,6 +33,4 @@ Option of this page are:
 View photos per folder page, here if there are more than the max items pe page ('see variable MAX_ON_PAGE default value 100') the pagination can be used to see them all. 
 Also there is a view photo vue library added to examin in more detail "vue-viewer" just click on photo:
 
-![name-of-you-image](https://github.com/LunguGeorgeProgramator/python_gallery_manager/blob/master/tutorial_photos/edit_page.jpg?raw=true)
-
 ![name-of-you-image](https://github.com/LunguGeorgeProgramator/python_gallery_manager/blob/master/tutorial_photos/view.jpg?raw=true)
