@@ -1,3 +1,14 @@
+Technologies:
+
+Django 3.0.5
+Python 3.7.7
+Bootstrap v4.4.1
+Font Awesome 4.7.0
+Vue v2.6.11
+Vue Modal
+VuePreviewer
+Axios v0.19.2
+
 This application is used for managing image gallery folders and files if is needed, in any place on a server if the permissions are set to read on them.
 
 It is build on Django and some vue elements on the ui side. Set a python environment and clone this project there.
