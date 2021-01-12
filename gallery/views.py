@@ -8,7 +8,7 @@ import random, ast, os, sys, stat, json
 def index(request, last_item = None):
     s = LoadFiles()
     r = Pagination(last_item)
-    files = s.scanDirFunc()[r.prev:r.lastPage]
+    files = s.scanDirFunc()[r.prev:int(r.last_page)]
     return render(request, 'index.html', { 
         'complete_list': s.getFirstFile(files),
         'next': r.next,
@@ -19,7 +19,7 @@ def view(request, folder_name, last_item = None):
     s = LoadFiles()
     r = Pagination(last_item)
     return render(request, 'view.html', {
-        'files_json': json.dumps(s.getPhotosFiles(folder_name)[r.prev:r.lastPage]),
+        'files_json': json.dumps(s.getPhotosFiles(folder_name)[r.prev:r.last_page]),
         # 'files': json.dumps(s.getPhotosFiles(folder_name)[r.prev:r.lastPage]),
         'folder_name': folder_name,
         'next': r.next,

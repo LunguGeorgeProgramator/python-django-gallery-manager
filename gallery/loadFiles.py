@@ -4,7 +4,7 @@ import urllib.parse
 
 class LoadFiles:
 
-    PATH = "c:/Users/George/venv/myProjects/gallery-pic"
+    PATH = "c:/Users/George/Pictures"
 
     def __init__(self, path_to_scan = None):
         self.path_to_scan = path_to_scan if path_to_scan else self.PATH

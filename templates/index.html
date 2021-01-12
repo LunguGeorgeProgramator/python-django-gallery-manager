@@ -36,9 +36,9 @@
     <div id="app">
         <div class="row">
             {% for file in complete_list %}
-            <div class="col-3 mb-2">
+            <div class="col-3 mb-2 hover-overlay ripple shadow-1-strong rounded" data-mdb-ripple-color="light">
                 <div class="ex2">
-                    <a target="_blank" href="{% url 'view_main' file.dir_name_encoded %}"><img width="250" src="{% static file.files_in_dir %}"></a>
+                    <a target="_blank" href="{% url 'view_main' file.dir_name_encoded %}"><img class="img-fluid rounded" src="{% static file.files_in_dir %}"></a>
                 </div>
                 <div class="ex3">
                     <!-- <input v-model="checkedDirName"> -->
@@ -55,7 +55,7 @@
     </div>
 </div>
 <div style="background: #2a3744;"> 
-    <div class="container mt-3" >
+    <div class="container" >
         <div class="row pt-4 pl-3" >
             {% if prev != None %}
             <nav aria-label="...">
