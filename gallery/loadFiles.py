@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 import os, re
 import urllib.parse
+from django.templatetags.static import static
 
 class LoadFiles:
 
-    PATH = "c:/Users/George/Pictures"
+    # PATH = "c:/Users/George/venv/myProjects/gallery-pic"
+    PATH = "./tutorial_photos"
 
     def __init__(self, path_to_scan = None):
         self.path_to_scan = path_to_scan if path_to_scan else self.PATH
@@ -40,10 +42,9 @@ class LoadFiles:
         dir_name = LoadFiles.decodeUrl(dir_name)
         self.path_to_scan = self.path_to_scan + '/' + dir_name
         for file in self.scanDirFunc():
-            file_path = self.path_to_scan + '/' + file
-            if os.path.isdir(file_path) == True or '.ini' in file:
+            if os.path.isdir(file) == True or '.ini' in file:
                 continue
-            files_content.append(('/static/' + file_path).strip())
+            files_content.append(static(file.strip()))
         return files_content
     
     @staticmethod

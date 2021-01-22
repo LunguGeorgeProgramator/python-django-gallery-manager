@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+    python:
+        image: python:3.7.7
+        volumes:
+            - .:/python-django-gallery-manager
+        ports:
+            - 8090:8090
+        command: bash -c "cd ./python-django-gallery-manager && pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8090"
