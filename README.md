@@ -64,7 +64,7 @@ To run this website on docker just follow the list steps:
         http://127.0.0.1:8090/ or http://0.0.0.0:8090/ or http://localhost:8090/ or http://your_docker_domenain_set:8090/
 
 
-This website can be run on a python envirement "you need to set on on your machine also set dejango to". The seteps to run it are:
+This website can be run on a python envirement "you need to set on on your machine also set dejango to". The setps to run it are:
 
 1. activate python envirement in terminal ("I am using windows"), venv is the name of the folder I set it:
 
