@@ -19,7 +19,7 @@ To set the path of the gallery change the code in class "LoadFiles" located in:
     
 Code to change is the path, I build this on a windows OS so my this is my pictures path on my computer. Change it to any paht on your machine that has a directories with photos files in them:
 
-    PATH = "c:/Users/George/Pictures"
+    PATH = "./tutorial_photos"
     
 The number of folder per page is set no by default to 100, it can be change to any number in class "Pagination" located in:
 
@@ -63,5 +63,28 @@ To run this website on docker just follow the list steps:
 
         http://127.0.0.1:8090/ or http://0.0.0.0:8090/ or http://localhost:8090/ or http://your_docker_domenain_set:8090/
 
+
+This website can be run on a python envirement "you need to set on on your machine also set dejango to". The seteps to run it are:
+
+1. activate python envirement in terminal ("I am using windows"), venv is the name of the folder I set it:
+
+        C:\Users\George> venv\Scripts\activate
+  
+2. Ender project location:
+
+        (venv) C:\Users\George>cd venv/myProjects/python-django-gallery-manager
+        
+3. Start python server:
+    
+        (venv) C:\Users\George\venv\myProjects\python-django-gallery-manager>py manage.py runserver
+        
+4. Wait for it to finish last line should be:
+
+        Starting development server at http://127.0.0.1:8000/
+        Quit the server with CTRL-BREAK.
+        
+ 5. Afetr just access in a browser link:
+
+        http://127.0.0.1:8000/ or http://0.0.0.0:8000/ or http://localhost:8000/ or http://your_enev_domenain_set:8000/
         
 
