@@ -45,3 +45,23 @@ View photos per folder page, here if there are more than the max items pe page (
 Also there is a view photo vue library added to examin in more detail "vue-viewer" just click on photo:
 
 ![name-of-you-image](https://github.com/LunguGeorgeProgramator/python_gallery_manager/blob/master/tutorial_photos/view.jpg?raw=true)
+
+To run this website on docker just follow the list steps:
+
+1. open terminal and ender project location:
+
+        cd your_path_to_project/python-django-gallery-manager
+2. run docker compose file to set python version and django package:
+
+        docker-compose up
+        
+3. after all is automaticlly downloaded and extrated I think last line shold be:
+
+        python_1  |  Watching for file changes with StatReloader
+
+4. Afetr just access in a browser link:
+
+        http://127.0.0.1:8090/ or http://0.0.0.0:8090/ or http://localhost:8090/ or http://your_docker_domenain_set:8090/
+
+        
+
