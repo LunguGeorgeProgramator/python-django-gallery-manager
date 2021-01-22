@@ -1,6 +1,6 @@
 class Pagination:
 
-    MAX_ON_PAGE = 100
+    MAX_ON_PAGE = 50
 
     def __init__(self, last_page = None):
         self.__last_page = int(last_page) if last_page else 0

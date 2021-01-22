@@ -44,7 +44,7 @@ class LoadFiles:
         for file in self.scanDirFunc():
             if os.path.isdir(file) == True or '.ini' in file:
                 continue
-            files_content.append(static(file.strip()))
+            files_content.append(static(dir_name + '/' + file.strip()))
         return files_content
     
     @staticmethod
